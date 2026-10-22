@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieListing extends StatefulWidget {
-  const MovieListing({super.key});
+  final Movie movie;
+
+  const MovieListing({super.key, required this.movie});
 
   @override
   State<MovieListing> createState() => _MovieListingState();
@@ -28,38 +31,46 @@ class _MovieListingState extends State<MovieListing> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Interstellar (2014)',
+            Text(
+              widget.movie.title,
               style: cinemaHeaderStyle,
             ),
             const SizedBox(height: 8),
-            const Text(
-              '125 mins',
-              style: TextStyle(color: cinemaFontMuted),
+            Text(
+              'Rated ${widget.movie.ageRating}  |  ${widget.movie.screeningTime}',
+              style: const TextStyle(color: cinemaFontMuted),
             ),
             const SizedBox(height: 8),
-            const Text(
-              'In a dystopian future where Earth has become near-uninhabitable,'
-              'a team of astronauts embark on a mission to find a new home for humanity. ',
-              style: TextStyle(color: cinemaFontWhite),
+            Text(
+              widget.movie.synopsis,
+              style: const TextStyle(color: cinemaFontWhite),
             ),
             const SizedBox(height: 16),
-            DropdownMenu<int>(
-              initialSelection: _ticketQuantity,
-              label: const Text('Tickets'),
-              onSelected: (int? value) {
-                if (value != null) {
-                  setState(() {
-                    _ticketQuantity = value;
-                  });
-                }
-              },
-              dropdownMenuEntries: const [
-                DropdownMenuEntry(value: 1, label: '1'),
-                DropdownMenuEntry(value: 2, label: '2'),
-                DropdownMenuEntry(value: 3, label: '3'),
-                DropdownMenuEntry(value: 4, label: '4'),
-                DropdownMenuEntry(value: 5, label: '5'),
+            Row(
+              children: [
+                DropdownMenu<int>(
+                  initialSelection: _ticketQuantity,
+                  label: const Text('Tickets'),
+                  onSelected: (int? value) {
+                    if (value != null) {
+                      setState(() {
+                        _ticketQuantity = value;
+                      });
+                    }
+                  },
+                  dropdownMenuEntries: const [
+                    DropdownMenuEntry(value: 1, label: '1'),
+                    DropdownMenuEntry(value: 2, label: '2'),
+                    DropdownMenuEntry(value: 3, label: '3'),
+                    DropdownMenuEntry(value: 4, label: '4'),
+                    DropdownMenuEntry(value: 5, label: '5'),
+                  ],
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  widget.movie.formattedPrice,
+                  style: const TextStyle(color: cinemaFontWhite),
+                ),
               ],
             ),
             const SizedBox(height: 8),
