@@ -84,7 +84,6 @@ class _MovieListingState extends State<MovieListing> {
                 setState(() {
                   _bookingMessage = 'Added $_ticketQuantity tickets';
                 });
-                print(_bookingMessage);
               },
               child: const Text('Add to order'),
             ),
