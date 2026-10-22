@@ -60,7 +60,7 @@ class MovieCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '£${movie.ticketPrice.toStringAsFixed(2)}',
+                  movie.formattedPrice,
                   style: const TextStyle(
                     color: cinemaFontWhite,
                     fontSize: 16,
