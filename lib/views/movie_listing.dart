@@ -23,7 +23,7 @@ class _MovieListingState extends State<MovieListing> {
         elevation: 0,
       ),
       drawer: const NavDrawer(),
-            body: Container(
+      body: Container(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,8 +72,8 @@ class _MovieListingState extends State<MovieListing> {
               onPressed: () {
                 setState(() {
                   _bookingMessage = 'Added $_ticketQuantity tickets';
-                }); 
-                print(_bookingMessage);  
+                });
+                print(_bookingMessage);
               },
               child: const Text('Add to order'),
             ),
