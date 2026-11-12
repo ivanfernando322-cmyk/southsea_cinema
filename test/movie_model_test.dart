@@ -50,7 +50,7 @@ void main() {
 
       expect(movie.formattedPrice, '£8.00');
     });
-        test('fromJson and toJson convert all fields', () {
+    test('fromJson and toJson convert all fields', () {
       final Map<String, dynamic> json = <String, dynamic>{
         'id': 'json-film',
         'title': 'Json Film',
@@ -90,6 +90,5 @@ void main() {
       expect(movie.ticketPrice, 8.0);
       expect(movie.formattedPrice, '£8.00');
     });
-
   });
 }

@@ -52,5 +52,4 @@ class Movie {
     };
     return data;
   }
-
 }
